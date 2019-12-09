@@ -4,6 +4,7 @@
   <title>Moteur de recherche</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -11,12 +12,13 @@
 
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
 <div class="container">
   <div class="jumbotron">
-    <h1>Recherchez votre chanteur.</h1>   
+    <h2>Recherchez votre artiste grâce à notre super moteur.</h2>   
 
     <form>
      <div class="form-group">
@@ -24,15 +26,22 @@
     <input  class="form-control"  placeholder="Tapez votre recherche" id="singers">
   
      </div>
-  <button type="submit" class="btn btn-primary">Recherchez</button>
+  <button type="submit" class="btn btn-primary" id="research">Recherchez</button>
   </form>  
 
   </div>
 
   <div class="jumbotron">
-    <h1>Résultat de la recherche</h1>     
+    <h2>Résultat de la recherche</h2>     
+
+    <table class="table table-striped " id="tableResult">
+       <tbody>
+    
+       </tbody>
+    </table>
   </div>
 </div>
+
 <script type="text/javascript" src="script.js"></script>
 </body>
 
