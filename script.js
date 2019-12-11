@@ -28,6 +28,7 @@ $( document ).ready(function() {
     }
 
     loadAllSingers();
+      $('#tableResult2').hide();
    
 
     
@@ -43,9 +44,13 @@ $( document ).ready(function() {
 
 
     $( "#research" ).click(function(e) {
+	
       event.preventDefault();  
       researchSinger($( "#singers" ).val() );
-
+      var res = $( "#singers" ).val() ;
+      res = res.replace(" ", "_");
+      console.log(res);
+	  researchAlbum(res);
     });
 
     function researchSinger(singerName) {
@@ -92,6 +97,42 @@ $( document ).ready(function() {
               alert(e);
              }
          });
+	 }
+         
+         function researchAlbum(singerName) {
+         var singerSPARQL = "prefix foaf: <http://xmlns.com/foaf/0.1/> prefix dbo: <http://dbpedia.org/ontology/> prefix dbp: <http://dbpedia.org/property/> prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> select distinct ?name ?artist ?releaseDate Where { ?x rdf:type dbo:MusicalWork. ?x dbo:artist ?artist. filter contains(str(?artist),\""+ singerName +"\"). ?x dbp:thisAlbum ?name. Optional{?x dbo:releaseDate ?releaseDate}. }";
+         var singerNameQuery = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=" + escape(singerSPARQL) + "&format=json";    
+         console.log(singerSPARQL);     
+         $.ajax({
+             url: singerNameQuery,
+             dataType: 'jsonp',
+             jsonp: 'callback',
+             success: function(data) {
+				 console.log(data);
+				 $('#tableResult2').show();
+                $('#tableResult2 tbody').empty();
+				var i=0;
+				var albums="";
+				var count = data.results.bindings.length;
+				console.log(count);
+				for(i=0;i<count;i++){
+					if(data.results.bindings[i].name != null && data.results.bindings[i].releaseDate != null){
+						albums+=data.results.bindings[i].name.value;
+						  $('#tableResult2').append('<tr><td>'+data.results.bindings[i].name.value +'</td><td>'+ data.results.bindings[i].releaseDate.value +'</td></tr>');
+					}else{
+						break;
+					}
+				}  
+				
+				albums = albums.slice(0,-1);
+				console.log(albums);
+				                                       
+             },  
+            error: function(e) {
+              alert(e);
+             }
+         });
+         
     }
 
 
