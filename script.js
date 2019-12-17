@@ -126,7 +126,7 @@ $( document ).ready(function() {
                 }
 
                 if(data.results.bindings[0].spouse != null){
-                    $('#tableResult').append('<tr><td>Epoux/Epouse </td><td>'+ data.results.bindings[0].spouse.value +'</td></tr>');
+                    $('#tableResult').append('<tr><td>Epoux/Epouse </td><td>'+ splitString(data.results.bindings[0].spouse.value) +'</td></tr>');
                 }
 
                 if(data.results.bindings[0].picture != null){
@@ -134,7 +134,7 @@ $( document ).ready(function() {
                     $('#tableResult').append('<tr><td>Photo </td><td> '+ image +'</td></tr>');
                 }
 				
-				if(data.results.bindings[0].name != null&&data.results.bindings[1].name != null&&data.results.bindings[0].description.value != data.results.bindings[1].description.value){
+				if(data.results.bindings.length>1&&data.results.bindings[0].name != null&&data.results.bindings[1].name != null&&data.results.bindings[0].description.value != data.results.bindings[1].description.value){
 					$('#tableResult4').show();
 					$('#multipleResult').append('Plusieurs Résultats sont trouvés:');
 					$('#multipleResult').append('1.'+data.results.bindings[0].description.value+' 2.'+data.results.bindings[1].description.value);
@@ -217,8 +217,8 @@ $( document ).ready(function() {
          });
 	 }
          
-          function researchSong(singerName) {
-			  var Song = "Song";
+    function researchSong(singerName) {
+	     var Song = "Song";
          var singerSPARQL = "prefix foaf: <http://xmlns.com/foaf/0.1/> prefix dbo: <http://dbpedia.org/ontology/> prefix dbp: <http://dbpedia.org/property/> prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> select distinct ?name ?album Where { ?x rdf:type dbo:MusicalWork. ?x dbo:artist ?artist. filter contains(str(?artist),\""+ singerName +"\"). ?x rdf:type ?type. ?x foaf:name ?name. filter contains(str(?type),\"Song\"). ?x dbo:album ?album. }Limit 10.";
          var singerNameQuery = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=" + escape(singerSPARQL) + "&format=json";    
          console.log(singerSPARQL);     
@@ -235,7 +235,7 @@ $( document ).ready(function() {
 				console.log(count);
 				for(i=0;i<count;i++){
 					if(data.results.bindings[i].name != null && data.results.bindings[i].album != null){
-						  $('#tableResult3').append('<tr><td>'+data.results.bindings[i].name.value +'</td><td>'+ data.results.bindings[i].album.value +'</td></tr>');
+						  $('#tableResult3').append('<tr><td>'+data.results.bindings[i].name.value +'</td><td>'+ splitString(data.results.bindings[i].album.value) +'</td></tr>');
 					}else{
 						break;
 					}
@@ -250,4 +250,10 @@ $( document ).ready(function() {
          
     }
 
+	function splitString(str){
+		var arr = str.split('/');
+		var newStr = arr[arr.length-1];
+		newStr = newStr.replace(/_/g,' ');
+		return newStr;
+	}
 
