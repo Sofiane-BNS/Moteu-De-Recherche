@@ -105,6 +105,35 @@ $( document ).ready(function() {
                 $('#tableResult tbody').empty();
 				$('#multipleResult').empty();
                 $('#tableResult4 tbody').empty();
+				 if(data.results.bindings[0].name != null){
+                    $('#tableResult').append('<tr><td>Nom </td><td>'+ data.results.bindings[0].name.value +'</td></tr>');
+                }
+				
+				if(data.results.bindings[0].description != null){
+                    $('#tableResult').append('<tr><td>Déscription </td><td>'+ data.results.bindings[0].description.value +'</td></tr>');
+                }
+
+                if(data.results.bindings[0].birthName != null){
+                    $('#tableResult').append('<tr><td>Nom de naissance </td><td>'+ data.results.bindings[0].birthName.value +'</td></tr>');
+                }
+
+                if(data.results.bindings[0].birthDate != null){
+                    $('#tableResult').append('<tr><td>Date de naissance </td><td>'+ data.results.bindings[0].birthDate.value +'</td></tr>');
+                }
+
+                if(data.results.bindings[0].deathDate != null){
+                    $('#tableResult').append('<tr><td>Date de decès </td><td>'+ data.results.bindings[0].deathDate.value +'</td></tr>');
+                }
+
+                if(data.results.bindings[0].spouse != null){
+                    $('#tableResult').append('<tr><td>Epoux/Epouse </td><td>'+ data.results.bindings[0].spouse.value +'</td></tr>');
+                }
+
+                if(data.results.bindings[0].picture != null){
+                    var image = "<img class=\"picture\" src=\""+ data.results.bindings[0].picture.value +"\"  alt=\"photo\">"
+                    $('#tableResult').append('<tr><td>Photo </td><td> '+ image +'</td></tr>');
+                }
+				
 				if(data.results.bindings[0].name != null&&data.results.bindings[1].name != null&&data.results.bindings[0].description.value != data.results.bindings[1].description.value){
 					$('#tableResult4').show();
 					$('#multipleResult').append('Plusieurs Résultats sont trouvés:');
@@ -142,34 +171,7 @@ $( document ).ready(function() {
 					$('#tableResult4').hide();
 				}
 
-                if(data.results.bindings[0].name != null){
-                    $('#tableResult').append('<tr><td>Nom </td><td>'+ data.results.bindings[0].name.value +'</td></tr>');
-                }
-				
-				if(data.results.bindings[0].description != null){
-                    $('#tableResult').append('<tr><td>Déscription </td><td>'+ data.results.bindings[0].description.value +'</td></tr>');
-                }
-
-                if(data.results.bindings[0].birthName != null){
-                    $('#tableResult').append('<tr><td>Nom de naissance </td><td>'+ data.results.bindings[0].birthName.value +'</td></tr>');
-                }
-
-                if(data.results.bindings[0].birthDate != null){
-                    $('#tableResult').append('<tr><td>Date de naissance </td><td>'+ data.results.bindings[0].birthDate.value +'</td></tr>');
-                }
-
-                if(data.results.bindings[0].deathDate != null){
-                    $('#tableResult').append('<tr><td>Date de decès </td><td>'+ data.results.bindings[0].deathDate.value +'</td></tr>');
-                }
-
-                if(data.results.bindings[0].spouse != null){
-                    $('#tableResult').append('<tr><td>Epoux/Epouse </td><td>'+ data.results.bindings[0].spouse.value +'</td></tr>');
-                }
-
-                if(data.results.bindings[0].picture != null){
-                    var image = "<img class=\"picture\" src=\""+ data.results.bindings[0].picture.value +"\"  alt=\"photo\">"
-                    $('#tableResult').append('<tr><td>Photo </td><td> '+ image +'</td></tr>');
-                }
+               
 
                 
               
