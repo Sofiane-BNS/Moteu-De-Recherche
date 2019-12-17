@@ -2,14 +2,14 @@ var singerArr=[];
 $( document ).ready(function() {
     function loadAllSingers(){
 		
-         var companyListSPARQL = "prefix foaf: <http://xmlns.com/foaf/0.1/> prefix dbo: <http://dbpedia.org/ontology/> prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> select distinct ?name Where { ?x rdf:type dbo:MusicalArtist. ?x foaf:name ?name. ?x dbo:birthDate ?birth. filter(?birth >= \"19600101\"^^xsd:date)}";
+         var singerListSPARQL = "prefix foaf: <http://xmlns.com/foaf/0.1/> prefix dbo: <http://dbpedia.org/ontology/> prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> select distinct ?name Where { ?x rdf:type dbo:MusicalArtist. ?x foaf:name ?name. ?x dbo:birthDate ?birth. filter(?birth >= \"19600101\"^^xsd:date)}";
          var progress=10;
          //Preparing SPARQL query against DBPedia
-         var companyNameQuery = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=" + escape(companyListSPARQL) + "&format=json";
+         var singerNameQuery = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=" + escape(singerListSPARQL) + "&format=json";
          var progress=20;
 
         $.ajax({
-         url: companyNameQuery,
+         url: singerNameQuery,
          dataType: 'jsonp',
          jsonp: 'callback',
          success: function(data) {
@@ -60,14 +60,14 @@ $( document ).ready(function() {
 	function researchSingerName(partName){
 		console.log(partName);
 		if(partName.length>=2){
-			 var companyListSPARQL = "prefix foaf: <http://xmlns.com/foaf/0.1/> prefix dbo: <http://dbpedia.org/ontology/> prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> select distinct ?name Where { ?x rdf:type dbo:MusicalArtist. ?x foaf:name ?name. filter contains(?name,\""+ partName +"\").}";
+			 var singerListSPARQL = "prefix foaf: <http://xmlns.com/foaf/0.1/> prefix dbo: <http://dbpedia.org/ontology/> prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> select distinct ?name Where { ?x rdf:type dbo:MusicalArtist. ?x foaf:name ?name. filter contains(?name,\""+ partName +"\").}";
 			 var progress=10;
 			 //Preparing SPARQL query against DBPedia
-			 var companyNameQuery = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=" + escape(companyListSPARQL) + "&format=json";
+			 var singerNameQuery = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=" + escape(singerListSPARQL) + "&format=json";
 			 var progress=20;
 
 			$.ajax({
-			 url: companyNameQuery,
+			 url: singerNameQuery,
 			 dataType: 'jsonp',
 			 jsonp: 'callback',
 			 success: function(data) {
