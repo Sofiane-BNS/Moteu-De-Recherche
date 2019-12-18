@@ -102,7 +102,7 @@ $( document ).ready(function() {
              dataType: 'jsonp',
              jsonp: 'callback',
              success: function(data) {
-                $('#tableResult tbody').empty();
+                $('#tableResult ').empty();
 				$('#multipleResult').empty();
 				$('#tableResult4 tbody').empty();
 				if (data.results.bindings.length == 0) {
