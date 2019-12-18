@@ -1,9 +1,12 @@
 body {
  background-image: url("background.jpg");
+ background-repeat: no-repeat;
+ background-size: cover;
 }
 
 .jumbotron {
     background: rgba(150, 150, 150, 0.4);
+
 }
 
 .ui-autocomplete {
@@ -43,7 +46,7 @@ body {
 .ui-state-focus {
   text-decoration: none;
   color: #262626;
-  background-color: #f5f5f5;
+  background-color: #f5f5f56b;
   cursor: pointer;
 }
 
