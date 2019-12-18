@@ -1,3 +1,11 @@
+body {
+ background-image: url("background.jpg");
+}
+
+.jumbotron {
+    background: rgba(150, 150, 150, 0.4);
+}
+
 .ui-autocomplete {
   position: absolute;
   top: 100%;
