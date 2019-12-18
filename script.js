@@ -99,41 +99,41 @@ $( document ).ready(function() {
 					$('#multipleResult').append('Désolé,aucun résultat n\'est trouvé');
 				}else{
 					if(data.results.bindings[0].name != null){
-						$('#tableResult').append('<tr><td>Nom </td><td>'+ data.results.bindings[0].name.value +'</td></tr>');
+						$('#tableResult').append('<tr><td> <B>Nom</B> </td><td>'+ data.results.bindings[0].name.value +'</td></tr>');
 					}
 					
 					if(data.results.bindings[0].gender != null){
 						if(data.results.bindings[0].gender.value=='female'){
-							$('#tableResult').append('<tr><td>Genre </td><td>'+'Femme'+'</td></tr>');
+							$('#tableResult').append('<tr><td><B>Genre</B> </td><td>'+'Femme'+'</td></tr>');
 						}else if(data.results.bindings[0].gender.value=='male'){
-							$('#tableResult').append('<tr><td>Genre </td><td>'+'Homme'+'</td></tr>');
+							$('#tableResult').append('<tr><td><B>Genre</B> </td><td>'+'Homme'+'</td></tr>');
 						} 
 					}
 					
 					if(data.results.bindings[0].description != null){
-						$('#tableResult').append('<tr><td>Description </td><td>'+ data.results.bindings[0].description.value +'</td></tr>');
+						$('#tableResult').append('<tr><td><B>Description</B> </td><td>'+ data.results.bindings[0].description.value +'</td></tr>');
 					}
 									
 
 					if(data.results.bindings[0].birthName != null){
-						$('#tableResult').append('<tr><td>Nom de naissance </td><td>'+ data.results.bindings[0].birthName.value +'</td></tr>');
+						$('#tableResult').append('<tr><td><B>Nom de naissance</B> </td><td>'+ data.results.bindings[0].birthName.value +'</td></tr>');
 					}
 
 					if(data.results.bindings[0].birthDate != null){
-						$('#tableResult').append('<tr><td>Date de naissance </td><td>'+ data.results.bindings[0].birthDate.value +'</td></tr>');
+						$('#tableResult').append('<tr><td><B>Date de naissance</B> </td><td>'+ data.results.bindings[0].birthDate.value +'</td></tr>');
 					}
 
 					if(data.results.bindings[0].deathDate != null){
-						$('#tableResult').append('<tr><td>Date de decès </td><td>'+ data.results.bindings[0].deathDate.value +'</td></tr>');
+						$('#tableResult').append('<tr><td><B>Date de decès</B> </td><td>'+ data.results.bindings[0].deathDate.value +'</td></tr>');
 					}
 
 					if(data.results.bindings[0].spouse != null){
-						$('#tableResult').append('<tr><td>Epoux/Epouse </td><td>'+ splitString(data.results.bindings[0].spouse.value) +'</td></tr>');
+						$('#tableResult').append('<tr><td><B>Epoux/Epouse</B> </td><td>'+ splitString(data.results.bindings[0].spouse.value) +'</td></tr>');
 					}
 
 					if(data.results.bindings[0].picture != null){
 						var image = "<img class=\"picture\" src=\""+ data.results.bindings[0].picture.value +"\"  alt=\"photo\">"
-						$('#tableResult').append('<tr><td>Photo </td><td> '+ image +'</td></tr>');
+						$('#tableResult').append('<tr><td><B>Photo</B> </td><td> '+ image +'</td></tr>');
 					}
 					
 					if(data.results.bindings.length>1&&data.results.bindings[0].name != null&&data.results.bindings[1].name != null&&data.results.bindings[0].description.value != data.results.bindings[1].description.value){
@@ -146,35 +146,35 @@ $( document ).ready(function() {
 					
 						if(data.results.bindings[1].gender != null){
 							if(data.results.bindings[1].gender.value=='female'){
-								$('#tableResult4').append('<tr><td>Genre </td><td>'+'Femme'+'</td></tr>');
+								$('#tableResult4').append('<tr><td><B>Genre</B> </td><td>'+'Femme'+'</td></tr>');
 							}else if(data.results.bindings[1].gender.value=='male'){
-								$('#tableResult4').append('<tr><td>Genre </td><td>'+'Homme'+'</td></tr>');
+								$('#tableResult4').append('<tr><td><B>Genre</B> </td><td>'+'Homme'+'</td></tr>');
 							} 
 						}
 									
 						if(data.results.bindings[1].description != null){
-							$('#tableResult4').append('<tr><td>Déscription </td><td>'+ data.results.bindings[1].description.value +'</td></tr>');
+							$('#tableResult4').append('<tr><td><B>Déscription</B> </td><td>'+ data.results.bindings[1].description.value +'</td></tr>');
 						}
 
 						if(data.results.bindings[1].birthName != null){
-							$('#tableResult4').append('<tr><td>Nom de naissance </td><td>'+ data.results.bindings[1].birthName.value +'</td></tr>');
+							$('#tableResult4').append('<tr><td><B>Nom de naissance </B></td><td>'+ data.results.bindings[1].birthName.value +'</td></tr>');
 						}
 
 						if(data.results.bindings[1].birthDate != null){
-							$('#tableResult4').append('<tr><td>Date de naissance </td><td>'+ data.results.bindings[1].birthDate.value +'</td></tr>');
+							$('#tableResult4').append('<tr><td><B>Date de naissance </B></td><td>'+ data.results.bindings[1].birthDate.value +'</td></tr>');
 						}
 
 						if(data.results.bindings[1].deathDate != null){
-							$('#tableResult4').append('<tr><td>Date de decès </td><td>'+ data.results.bindings[1].deathDate.value +'</td></tr>');
+							$('#tableResult4').append('<tr><td><B>Date de decès</B> </td><td>'+ data.results.bindings[1].deathDate.value +'</td></tr>');
 						}
 
 						if(data.results.bindings[1].spouse != null){
-							$('#tableResult4').append('<tr><td>Epoux/Epouse </td><td>'+ data.results.bindings[1].spouse.value +'</td></tr>');
+							$('#tableResult4').append('<tr><td><B>Epoux/Epouse</B> </td><td>'+ data.results.bindings[1].spouse.value +'</td></tr>');
 						}
 
 						if(data.results.bindings[1].picture != null){
 							var image = "<img class=\"picture\" src=\""+ data.results.bindings[1].picture.value +"\"  alt=\"photo\">"
-							$('#tableResult4').append('<tr><td>Photo </td><td> '+ image +'</td></tr>');
+							$('#tableResult4').append('<tr><td><B>Photo</B> </td><td> '+ image +'</td></tr>');
 						}
 						
 					}else{
