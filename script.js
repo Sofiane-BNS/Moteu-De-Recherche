@@ -48,7 +48,7 @@ $( document ).ready(function() {
     $( "#research" ).click(function(e) {
 	
       event.preventDefault();  
-      researchSinger($("#singers").val().charAt(0).toUpperCase() + $("#singers").val().substring(1).toLowerCase());
+      researchSinger($("#singers").val().charAt(0).toUpperCase() + $("#singers").val().substring(1));
       var res = $( "#singers" ).val() ;
       res = res.replace(" ", "_");
       console.log(res);
